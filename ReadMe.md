@@ -9,8 +9,6 @@ This is a lightweight Flask app to extract text from both regular and scanned PD
 - Works offline
 - Built with Flask + HTML + Tailwind CSS
 
-## 📸 Demo
-![screenshot](static/demo.png) <!-- optional screenshot -->
 
 ## 🧰 Tech Stack
 - Python (Flask)
