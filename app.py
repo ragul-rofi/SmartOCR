@@ -7,7 +7,7 @@ from PIL import Image
 import pytesseract
 
 # Set Tesseract path if on Windows
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = os.getenv("TESSERACT_PATH", "/usr/bin/tesseract")
 
 # Configuration
 UPLOAD_FOLDER = 'uploads'
