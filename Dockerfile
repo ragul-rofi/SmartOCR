@@ -1,22 +1,26 @@
-# Use a slim but secure Python base image
-FROM python:3.10-slim-bookworm
+FROM python:3.10-slim
 
-# Set environment variables to prevent Python from writing .pyc files and buffering stdout/stderr
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    libpq-dev \
+    tesseract-ocr \
+    poppler-utils \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /app
 
-# Copy requirements and install them
-COPY requirements.txt .
-RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
-
-# Copy project files into the image
+# Copy project files
 COPY . .
 
-# Expose the port your app runs on (Flask default is 5000)
+# Install Python dependencies
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Expose the port
 EXPOSE 5000
 
-# Command to run the app using gunicorn
+# Run the app
 CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
