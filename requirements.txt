@@ -196,6 +196,7 @@ python-telegram-bot==20.0
 pyttsx3==2.98
 pytweening==1.2.0
 pytz==2024.1
+
 pywin32-ctypes==0.2.3
 pywinpty==2.0.13
 PyYAML==6.0.1
@@ -235,7 +236,7 @@ supafunc==0.9.4
 tensorboard==2.18.0
 tensorboard-data-server==0.7.2
 tensorflow==2.18.0
-tensorflow_intel==2.18.0
+
 termcolor==2.5.0
 terminado==0.18.1
 threadpoolctl==3.5.0
